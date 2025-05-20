@@ -1,0 +1,38 @@
+{
+  "subsidy": {
+    "effectiveness": 0.59,
+    "cost": 1660991.77,
+    "implementation_time": 2,
+    "coverage": 0.31
+  },
+  "credit": {
+    "effectiveness": 0.7,
+    "cost": 4882484.14,
+    "implementation_time": 4,
+    "coverage": 0.64
+  },
+  "insurance": {
+    "effectiveness": 0.72,
+    "cost": 2187474.41,
+    "implementation_time": 3,
+    "coverage": 0.34
+  },
+  "technology_adoption": {
+    "effectiveness": 0.58,
+    "cost": 1539226.65,
+    "implementation_time": 5,
+    "coverage": 0.66
+  },
+  "infrastructure_development": {
+    "effectiveness": 0.42,
+    "cost": 2035472.75,
+    "implementation_time": 2,
+    "coverage": 0.56
+  },
+  "research_development": {
+    "effectiveness": 0.78,
+    "cost": 2887378.01,
+    "implementation_time": 1,
+    "coverage": 0.28
+  }
+}

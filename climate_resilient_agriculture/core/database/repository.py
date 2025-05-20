@@ -37,6 +37,7 @@ class SimulationRepository:
         """Update simulation results"""
         simulation = self.get_simulation(simulation_id)
         if simulation:
+            # Ensure results are JSON serializable
             simulation.results = results
             self.session.commit()
         return simulation
@@ -130,4 +131,22 @@ class SimulationRepository:
             self.session.delete(simulation)
             self.session.commit()
             return True
-        return False 
+        return False
+    
+    def batch_create_climate_data(self, climate_data_list: List[Dict]) -> List[ClimateData]:
+        """Batch create climate data records"""
+        data_objects = [
+            ClimateData(**data) for data in climate_data_list
+        ]
+        self.session.bulk_save_objects(data_objects)
+        self.session.commit()
+        return data_objects
+    
+    def batch_create_production_data(self, production_data_list: List[Dict]) -> List[ProductionData]:
+        """Batch create production data records"""
+        data_objects = [
+            ProductionData(**data) for data in production_data_list
+        ]
+        self.session.bulk_save_objects(data_objects)
+        self.session.commit()
+        return data_objects 

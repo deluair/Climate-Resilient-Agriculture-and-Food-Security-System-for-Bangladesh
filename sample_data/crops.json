@@ -1,0 +1,66 @@
+{
+  "Rice": {
+    "base_yield": 3.32,
+    "price": 37953.15,
+    "water_requirement": 1474.46,
+    "temperature_sensitivity": 0.13,
+    "flood_sensitivity": 0.21,
+    "drought_sensitivity": 0.4
+  },
+  "Wheat": {
+    "base_yield": 4.98,
+    "price": 38077.34,
+    "water_requirement": 1751.06,
+    "temperature_sensitivity": 0.22,
+    "flood_sensitivity": 0.23,
+    "drought_sensitivity": 0.41
+  },
+  "Maize": {
+    "base_yield": 3.3,
+    "price": 47947.66,
+    "water_requirement": 1316.81,
+    "temperature_sensitivity": 0.2,
+    "flood_sensitivity": 0.29,
+    "drought_sensitivity": 0.24
+  },
+  "Potato": {
+    "base_yield": 2.02,
+    "price": 24904.81,
+    "water_requirement": 1455.72,
+    "temperature_sensitivity": 0.3,
+    "flood_sensitivity": 0.41,
+    "drought_sensitivity": 0.31
+  },
+  "Jute": {
+    "base_yield": 3.99,
+    "price": 34228.62,
+    "water_requirement": 1266.0,
+    "temperature_sensitivity": 0.29,
+    "flood_sensitivity": 0.39,
+    "drought_sensitivity": 0.39
+  },
+  "Sugarcane": {
+    "base_yield": 2.66,
+    "price": 49370.31,
+    "water_requirement": 1318.19,
+    "temperature_sensitivity": 0.13,
+    "flood_sensitivity": 0.49,
+    "drought_sensitivity": 0.21
+  },
+  "Vegetables": {
+    "base_yield": 2.99,
+    "price": 43573.48,
+    "water_requirement": 1817.38,
+    "temperature_sensitivity": 0.16,
+    "flood_sensitivity": 0.46,
+    "drought_sensitivity": 0.49
+  },
+  "Fruits": {
+    "base_yield": 3.81,
+    "price": 38854.03,
+    "water_requirement": 520.34,
+    "temperature_sensitivity": 0.22,
+    "flood_sensitivity": 0.47,
+    "drought_sensitivity": 0.35
+  }
+}

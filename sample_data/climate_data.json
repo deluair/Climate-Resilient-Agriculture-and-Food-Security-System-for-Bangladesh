@@ -1,0 +1,16 @@
+{
+  "temperature": {
+    "min": 15.0,
+    "max": 35.0,
+    "trend": 0.02
+  },
+  "rainfall": {
+    "min": 1500,
+    "max": 3000,
+    "monsoon_ratio": 0.8
+  },
+  "sea_level": {
+    "current": 0.0,
+    "rise_rate": 0.004
+  }
+}

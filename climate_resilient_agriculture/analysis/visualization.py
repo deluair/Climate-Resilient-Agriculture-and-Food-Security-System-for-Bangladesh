@@ -1,18 +1,84 @@
 import matplotlib.pyplot as plt
-import seaborn as sns
 import pandas as pd
 import numpy as np
 from typing import Dict, List
-from datetime import datetime
+from pathlib import Path
 import folium
 from folium.plugins import HeatMap
 
 class SimulationVisualizer:
-    """Class for visualizing simulation results"""
+    """Visualizes simulation results"""
     
     def __init__(self):
-        plt.style.use('seaborn')
-        sns.set_palette("husl")
+        """Initialize the visualizer"""
+        plt.style.use('default')  # Use default style instead of seaborn
+    
+    def generate_comparison_plots(self, results: Dict, output_dir: Path):
+        """Generate comparison plots for different scenarios"""
+        # Create output directory if it doesn't exist
+        output_dir.mkdir(parents=True, exist_ok=True)
+        
+        # Plot temperature trends
+        self._plot_temperature_trends(results, output_dir)
+        
+        # Plot rainfall patterns
+        self._plot_rainfall_patterns(results, output_dir)
+        
+        # Plot crop yields
+        self._plot_crop_yields(results, output_dir)
+        
+        plt.close('all')
+    
+    def _plot_temperature_trends(self, results: Dict, output_dir: Path):
+        """Plot temperature trends for different scenarios"""
+        plt.figure(figsize=(12, 6))
+        
+        for scenario, data in results.items():
+            dates = [pd.to_datetime(r['date']) for r in data['results']]
+            temps = [r['regions'][0]['temperature'] for r in data['results']]
+            plt.plot(dates, temps, label=scenario)
+        
+        plt.title('Temperature Trends Across Scenarios')
+        plt.xlabel('Date')
+        plt.ylabel('Temperature (°C)')
+        plt.legend()
+        plt.grid(True)
+        plt.savefig(output_dir / 'temperature_trends.png')
+        plt.close()
+    
+    def _plot_rainfall_patterns(self, results: Dict, output_dir: Path):
+        """Plot rainfall patterns for different scenarios"""
+        plt.figure(figsize=(12, 6))
+        
+        for scenario, data in results.items():
+            dates = [pd.to_datetime(r['date']) for r in data['results']]
+            rainfall = [r['regions'][0]['rainfall'] for r in data['results']]
+            plt.plot(dates, rainfall, label=scenario)
+        
+        plt.title('Rainfall Patterns Across Scenarios')
+        plt.xlabel('Date')
+        plt.ylabel('Rainfall (mm)')
+        plt.legend()
+        plt.grid(True)
+        plt.savefig(output_dir / 'rainfall_patterns.png')
+        plt.close()
+    
+    def _plot_crop_yields(self, results: Dict, output_dir: Path):
+        """Plot crop yields for different scenarios"""
+        plt.figure(figsize=(12, 6))
+        
+        for scenario, data in results.items():
+            dates = [pd.to_datetime(r['date']) for r in data['results']]
+            yields = [r['regions'][0]['crop_yield'] for r in data['results']]
+            plt.plot(dates, yields, label=scenario)
+        
+        plt.title('Crop Yields Across Scenarios')
+        plt.xlabel('Date')
+        plt.ylabel('Yield (tons/hectare)')
+        plt.legend()
+        plt.grid(True)
+        plt.savefig(output_dir / 'crop_yields.png')
+        plt.close()
         
     def plot_climate_impact(self, climate_data: Dict[str, List[Dict[str, float]]], 
                           save_path: str = None) -> None:
@@ -93,28 +159,28 @@ class SimulationVisualizer:
         # Land holding size distribution
         plt.subplot(2, 2, 1)
         land_sizes = [f['land_holding_size'] for f in farmers]
-        sns.histplot(land_sizes, bins=30)
+        plt.hist(land_sizes, bins=30)
         plt.title('Distribution of Land Holding Sizes')
         plt.xlabel('Land Size (hectares)')
         
         # Technology adoption level
         plt.subplot(2, 2, 2)
         tech_levels = [f['technology_adoption_level'] for f in farmers]
-        sns.histplot(tech_levels, bins=30)
+        plt.hist(tech_levels, bins=30)
         plt.title('Distribution of Technology Adoption Levels')
         plt.xlabel('Adoption Level')
         
         # Farming experience
         plt.subplot(2, 2, 3)
         experience = [f['farming_experience'] for f in farmers]
-        sns.histplot(experience, bins=30)
+        plt.hist(experience, bins=30)
         plt.title('Distribution of Farming Experience')
         plt.xlabel('Years of Experience')
         
         # Risk tolerance
         plt.subplot(2, 2, 4)
         risk_tolerance = [f['risk_tolerance'] for f in farmers]
-        sns.histplot(risk_tolerance, bins=30)
+        plt.hist(risk_tolerance, bins=30)
         plt.title('Distribution of Risk Tolerance')
         plt.xlabel('Risk Tolerance Level')
         
